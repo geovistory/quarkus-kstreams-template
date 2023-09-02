@@ -20,16 +20,12 @@ import java.time.Instant;
 
 @ApplicationScoped
 public class TopologyProducer {
-
     static final String WEATHER_STATIONS_STORE = "weather-stations-store";
-
     private static final String WEATHER_STATIONS_TOPIC = "weather-stations";
     private static final String TEMPERATURE_VALUES_TOPIC = "temperature-values";
     private static final String TEMPERATURES_AGGREGATED_TOPIC = "temperatures-aggregated";
-
     @Inject
     ConfiguredAvroSerde as;
-
     @Produces
     public Topology buildTopology() {
         StreamsBuilder builder = new StreamsBuilder();
