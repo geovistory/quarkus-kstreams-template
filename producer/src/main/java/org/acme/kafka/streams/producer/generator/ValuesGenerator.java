@@ -11,6 +11,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.reactive.messaging.kafka.Record;
+import org.acme.avro.TemperatureValue;
 import org.acme.avro.WheatherStationKey;
 import org.acme.avro.WheatherStationValue;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
@@ -41,7 +42,7 @@ public class ValuesGenerator {
             new WeatherStation(9, "Marrakesh", 20));
 
     @Outgoing("temperature-values")
-    public Multi<Record<Integer, String>> generate() {
+    public Multi<Record<WheatherStationKey, TemperatureValue>> generate() {
         return Multi.createFrom().ticks().every(Duration.ofMillis(500))
                 .onOverflow().drop()
                 .map(tick -> {
@@ -51,7 +52,10 @@ public class ValuesGenerator {
                             .doubleValue();
 
                     LOG.infov("station: {0}, temperature: {1}", station.name, temperature);
-                    return Record.of(station.id, Instant.now() + ";" + temperature);
+                    return Record.of(
+                            WheatherStationKey.newBuilder().setId(station.id).build(),
+                            TemperatureValue.newBuilder().setTemperature(Instant.now() + ";" + temperature).build()
+                    );
                 });
     }
 

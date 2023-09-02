@@ -46,15 +46,18 @@ be detected automatically: https://quarkus.io/guides/kafka#serialization-autodet
  In `application.properties` add the following lines, to undef
 
 ```text
+mp.messaging.outgoing.temperature-values.connector=smallrye-kafka
+
+# automatically register the schema with the registry, if not present
+mp.messaging.outgoing.temperature-values.key.auto.register.schemas=true
+mp.messaging.outgoing.temperature-values.value.auto.register.schemas=true
+
 mp.messaging.outgoing.weather-stations.connector=smallrye-kafka
 
 # automatically register the schema with the registry, if not present
 mp.messaging.outgoing.weather-stations.key.auto.register.schemas=true
 mp.messaging.outgoing.weather-stations.value.auto.register.schemas=true
 
-## don't set the serializer explicitly
-# mp.messaging.outgoing.weather-stations.key.serializer=org.apache.kafka.common.serialization.IntegerSerializer
-# mp.messaging.outgoing.weather-stations.value.serializer=org.apache.kafka.common.serialization.StringSerializer
 
 # Dev profile
 %dev.kafka.bootstrap.servers=localhost:1121
