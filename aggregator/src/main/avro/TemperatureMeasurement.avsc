@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "TemperatureMeasurement",
+  "namespace": "org.acme.avro",
+  "fields": [
+    {
+      "name": "stationName",
+      "type": "string"
+    },
+    {
+      "name": "timestamp",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "double"
+    }
+  ]
+}

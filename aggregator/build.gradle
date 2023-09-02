@@ -1,11 +1,15 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id 'org.acme.copy-avro'
 }
 
 repositories {
     mavenCentral()
     mavenLocal()
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
 }
 
 dependencies {
@@ -14,6 +18,12 @@ dependencies {
     implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
     implementation 'io.quarkus:quarkus-arc'
     testImplementation 'io.quarkus:quarkus-junit5'
+
+    implementation 'io.quarkus:quarkus-confluent-registry-avro'
+
+    implementation("io.confluent:kafka-streams-avro-serde:7.2.0") {
+        exclude group: "jakarta.ws.rs", module: "jakarta.ws.rs-api"
+    }
 }
 
 group 'org.acme'

@@ -1,0 +1,36 @@
+{
+  "type": "record",
+  "name": "Aggregation",
+  "namespace": "org.acme.avro",
+  "fields": [
+    {
+      "name": "stationName",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "min",
+      "type": "double"
+    },
+    {
+      "name": "max",
+      "type": "double"
+    },
+    {
+      "name": "count",
+      "type": "int",
+      "default": 0
+    },
+    {
+      "name": "avg",
+      "type": "double",
+      "default": 0
+    },
+    {
+      "name": "sum",
+      "type": "double",
+      "default": 0
+
+    }
+  ]
+}

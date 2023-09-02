@@ -7,9 +7,15 @@ plugins {
     id 'groovy-gradle-plugin'
 }
 
-tasks.register('copyToMultipleDestinations', Copy) {
-    from '../avro'
-    into '../producer/src/main/avro'
+tasks.register('copyToMultipleDestinations') {
+    copy {
+        from '../avro'
+        into '../producer/src/main/avro/common'
+    }
+    copy {
+        from '../avro'
+        into '../aggregator/src/main/avro/common'
+    }
 }
 
 // Make sure the 'compileJava' task depends on your custom 'copyToMultipleDestinations' task

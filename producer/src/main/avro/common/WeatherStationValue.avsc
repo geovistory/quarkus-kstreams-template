@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "WheatherStationValue",
+  "namespace": "org.acme.avro",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "averageTemperature",
+      "type": "int"
+    }
+  ]
+}

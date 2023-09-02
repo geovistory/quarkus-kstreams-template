@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "TemperatureValue",
+  "namespace": "org.acme.avro",
+  "fields": [
+    {
+      "name": "temperature",
+      "type": "string"
+    }
+  ]
+}
