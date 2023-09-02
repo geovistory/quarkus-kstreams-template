@@ -15,4 +15,4 @@ pluginManagement {
     }
 }
 rootProject.name = 'kstreams-dev-mode'
-include 'producer', 'aggregator', 'avro'
+include 'producer', 'aggregator'

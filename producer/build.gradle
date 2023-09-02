@@ -1,21 +1,29 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id 'org.acme.copy-avro'
 }
 
 repositories {
     mavenCentral()
     mavenLocal()
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
 }
 
 dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-smallrye-reactive-messaging-kafka'
     implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-resteasy-reactive'
+    implementation 'io.quarkus:quarkus-confluent-registry-avro'
+
+    implementation("io.confluent:kafka-avro-serializer:7.2.0") {
+        exclude group: "jakarta.ws.rs", module: "jakarta.ws.rs-api"
+    }
+
     testImplementation 'io.quarkus:quarkus-junit5'
-
-    implementation project(':avro')
-
 }
 
 group 'org.acme'

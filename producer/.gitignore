@@ -37,3 +37,6 @@ nb-configuration.xml
 
 # Plugin directory
 /.quarkus/cli/plugins/
+
+# copied from 'avro' directory in root
+avro

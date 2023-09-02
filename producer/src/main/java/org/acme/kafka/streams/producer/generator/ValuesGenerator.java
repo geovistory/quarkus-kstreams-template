@@ -11,6 +11,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.reactive.messaging.kafka.Record;
+import org.acme.avro.WheatherStationKey;
+import org.acme.avro.WheatherStationValue;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.jboss.logging.Logger;
 
@@ -54,12 +56,13 @@ public class ValuesGenerator {
     }
 
     @Outgoing("weather-stations")
-    public Multi<Record<Integer, String>> weatherStations() {
+    public Multi<Record<WheatherStationKey, WheatherStationValue>> weatherStations() {
         return Multi.createFrom().items(stations.stream()
                 .map(s -> Record.of(
-                        s.id,
-                        "{ \"id\" : " + s.id +
-                                ", \"name\" : \"" + s.name + "\" }"))
+                                WheatherStationKey.newBuilder().setId(s.id).build(),
+                                WheatherStationValue.newBuilder().setName(s.name).setAverageTemperature(s.averageTemperature).build()
+                        )
+                )
         );
     }
 
