@@ -17,13 +17,18 @@ dependencies {
     implementation 'io.quarkus:quarkus-kafka-streams'
     implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
     implementation 'io.quarkus:quarkus-arc'
-    testImplementation 'io.quarkus:quarkus-junit5'
+
 
     implementation 'io.quarkus:quarkus-confluent-registry-avro'
 
     implementation("io.confluent:kafka-streams-avro-serde:7.2.0") {
         exclude group: "jakarta.ws.rs", module: "jakarta.ws.rs-api"
     }
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.quarkus:quarkus-test-kafka-companion:3.2.2.Final'
+    // Added for test with embedded redpanda broker
+    testImplementation "org.testcontainers:redpanda:1.19.0"
 }
 
 group 'org.acme'

@@ -64,7 +64,7 @@ public class ValuesGenerator {
         return Multi.createFrom().items(stations.stream()
                 .map(s -> Record.of(
                                 WheatherStationKey.newBuilder().setId(s.id).build(),
-                                WheatherStationValue.newBuilder().setName(s.name).setAverageTemperature(s.averageTemperature).build()
+                                WheatherStationValue.newBuilder().setName(s.name).build()
                         )
                 )
         );

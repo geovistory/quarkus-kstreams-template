@@ -13,6 +13,7 @@ import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Produced;
 import org.apache.kafka.streams.state.KeyValueBytesStoreSupplier;
 import org.apache.kafka.streams.state.Stores;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,9 +22,12 @@ import java.time.Instant;
 @ApplicationScoped
 public class TopologyProducer {
     static final String WEATHER_STATIONS_STORE = "weather-stations-store";
-    private static final String WEATHER_STATIONS_TOPIC = "weather-stations";
-    private static final String TEMPERATURE_VALUES_TOPIC = "temperature-values";
-    private static final String TEMPERATURES_AGGREGATED_TOPIC = "temperatures-aggregated";
+    static final String WEATHER_STATIONS_TOPIC = "weather-stations";
+    static final String TEMPERATURE_VALUES_TOPIC = "temperature-values";
+    static final String TEMPERATURES_AGGREGATED_TOPIC = "temperatures-aggregated";
+
+    @ConfigProperty(name = "quarkus.kafka-streams.bootstrap-servers")
+    String bootstrapServers;
     @Inject
     ConfiguredAvroSerde as;
     @Produces
@@ -78,7 +82,6 @@ public class TopologyProducer {
         a.setSum(a.getSum() + measurement.getValue());
         a.setAvg(BigDecimal.valueOf(a.getSum() / a.getCount())
                 .setScale(1, RoundingMode.HALF_UP).doubleValue());
-
         a.setMin(Math.min(a.getMin(), measurement.getValue()));
         a.setMax(Math.max(a.getMax(), measurement.getValue()));
         return a;

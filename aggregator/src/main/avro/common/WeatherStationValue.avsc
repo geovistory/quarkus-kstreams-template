@@ -6,10 +6,6 @@
     {
       "name": "name",
       "type": "string"
-    },
-    {
-      "name": "averageTemperature",
-      "type": "int"
     }
   ]
 }

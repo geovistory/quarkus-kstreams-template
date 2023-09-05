@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 @ApplicationScoped
 public class ConfiguredAvroSerde {
-    @ConfigProperty(name = "schema.registry.url")
+    @ConfigProperty(name = "quarkus.kafka-streams.schema.registry.url")
     public String schemaRegistryUrl;
     private Serde configuredKeySerde;
     private Serde configuredValueSerde;

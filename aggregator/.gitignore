@@ -37,4 +37,10 @@ nb-configuration.xml
 
 # Plugin directory
 /.quarkus/cli/plugins/
+
+# avro schemas copied from root
 /src/main/avro/common/
+
+# kafka streams state directories
+/state_test_mode/
+/state_dev_mode/
