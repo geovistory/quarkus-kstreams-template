@@ -1,3 +1,5 @@
+This is a test and template repo for the correct setup of quarkus and kafka streams with integration in dev-stack.
+
 # Start
 
 Download dev-stack
