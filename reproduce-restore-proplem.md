@@ -1,4 +1,4 @@
-# Goal
+~~# Goal
 
 With toolbox streams apps we have observed that state store changelogs are not restored correctly:
 
@@ -41,5 +41,8 @@ Then:
     {aggregator-2-weather-stations-store-changelog-0: position=25, end=26, totalRestored=9}
 ```
 
-
+## Step 3
+And I added this configurations:
+kafka-streams.acceptable.recovery.lag=10
+-> problem persists.
 
