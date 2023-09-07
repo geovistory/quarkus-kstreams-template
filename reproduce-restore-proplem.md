@@ -46,3 +46,18 @@ And I added this configurations:
 kafka-streams.acceptable.recovery.lag=10
 -> problem persists.
 
+## Step 4
+And I added this configurations:
+```
+kafka-streams.processing.guarantee=exactly_once_v2
+# kafka-streams.consumer.isolation.level=read_committed
+```
+
+Then:
+- Start a kafka streams app with state store
+- Stop it and delete state directory
+- restart redpanda broker(s)
+- Start a kafka streams app with state store
+- Restoration is stuck
+
+
