@@ -61,3 +61,18 @@ Then:
 - Restoration is stuck
 
 
+## Step 5
+I added this configurations:
+```
+quarkus.kafka-streams.application-id=aggregator-5
+kafka-streams.processing.guarantee=at_least_once
+kafka-streams.consumer.isolation.level=read_committed
+```
+
+Then:
+- Start a kafka streams app with state store
+- Stop it and delete state directory
+- restart redpanda broker(s)
+- Start a kafka streams app with state store
+- Restoration is DONE!
+
