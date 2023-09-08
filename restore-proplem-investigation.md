@@ -1,6 +1,6 @@
-~~# Goal
+# Goal
 
-With toolbox streams apps we have observed that state store changelogs are not restored correctly:
+With kafka streams apps we have observed that state store changelogs are not restored correctly:
 
 - Start a kafka streams app with state store
 - Stop it and delete state directory
@@ -13,7 +13,6 @@ The goal is to find out, why this happens. Therefore we try to reproduce the beh
 ## Step 1
 commit feba7c8
 With default settings, the problem does not appear.
-
 
 ## Step 2
 
