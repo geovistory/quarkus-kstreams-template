@@ -8,7 +8,7 @@ It uses:
   - a producer app (`./producer`)
   - a kafka streams app (`./aggregator`). 
 
-The quarkus apps are inspired by (kafka-streams-quickstart)[https://github.com/quarkusio/quarkus-quickstarts/blob/main/kafka-streams-quickstart/].
+The quarkus apps are inspired by [kafka-streams-quickstart](https://github.com/quarkusio/quarkus-quickstarts/blob/main/kafka-streams-quickstart/).
 
 ## Problem description
 
