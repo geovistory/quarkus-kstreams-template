@@ -47,7 +47,7 @@ Build and start a producer (using quarkus).
 ```bash
 cd producer
 
-./gradlew quarkusDev 
+quarkus dev
 ```
 
 In the console you should find topics `temperature-values` and `weather-stations`.
@@ -60,7 +60,7 @@ In a new terminal
 ```bash
 cd aggregator
 
-./gradlew quarkusDev 
+quarkus dev
 ```
 
 In the console you should find topics `temperatures-aggregated` and `aggregator-weather-stations-store-changelog`.
@@ -88,7 +88,7 @@ Remove the folder `aggregator/state_dev_mode`
 ```bash
 cd aggregator
 
-./gradlew quarkusDev 
+quarkus dev
 ```
 
 See problem:
